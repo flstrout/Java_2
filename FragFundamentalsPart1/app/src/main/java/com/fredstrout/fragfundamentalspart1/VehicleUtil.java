@@ -54,7 +54,7 @@ public class VehicleUtil {
                 for (int p = 0; p < modelArr.length(); p++) {
                     JSONObject modelObj = modelArr.getJSONObject(p);
                     String model = modelObj.getString("name");
-                    vehicles.add(new Vehicle(make, null));
+                    vehicles.add(new Vehicle(make, model));
                 }
             }
         } catch (JSONException e){

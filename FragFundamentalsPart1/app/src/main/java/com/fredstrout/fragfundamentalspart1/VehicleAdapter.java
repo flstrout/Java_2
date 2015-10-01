@@ -21,7 +21,7 @@ public class VehicleAdapter extends BaseAdapter {
     Context mContext;
     ArrayList<Vehicle> mVehicles;
 
-    public VehicleAdapter(Context _c, ArrayList<Vehicle> _vehicles){
+    public VehicleAdapter(Context _c, int simple_list_item_1, ArrayList<Vehicle> _vehicles){
         mContext = _c;
         mVehicles = _vehicles;
     }
