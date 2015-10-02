@@ -26,6 +26,6 @@ public class Vehicle {
     public String getModel() { return mModel; }
 
     @Override
-    public String toString() { return mMake; }
+    public String toString() { return mModel; }
 
 }

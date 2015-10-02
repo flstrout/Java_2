@@ -1,9 +1,9 @@
 package com.fredstrout.fragfundamentalspart1;
 
-// Connected
+// FragFundamentalsPart1
 // Created by Fred L. Strout
-// 9/23/2015
-// Java 1 - Project 4 -
+// 9/30/2015
+// Java 2 - Project 1
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;

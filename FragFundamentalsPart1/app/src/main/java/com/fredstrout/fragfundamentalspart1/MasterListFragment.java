@@ -33,50 +33,22 @@ public class MasterListFragment extends ListFragment implements VehicleInterface
 
         VehicleInterface task = new VehicleInterface(this);
         task.execute();
-
-//        ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
-//        vehicles.add(new Vehicle("Aston Martin", "Model 1"));
-//        vehicles.add(new Vehicle("Buick", "Model 2"));
-//        vehicles.add(new Vehicle("Lamborghini", "Model 3"));
-
-//        VehicleAdapter adapter = new VehicleAdapter(MainActivity.mContext, android.R.layout.simple_list_item_1, vehicles);
-//        setListAdapter(adapter);
     }
-//    @Override
-//    public void onListItemClick(ListView _l, View _v, int _position, long _id) {
-//        String vehicle = (String)_l.getItemAtPosition(_position);
-//        new AlertDialog.Builder(getActivity())
-//                .setTitle("Vehicle")
-//                .setMessage(vehicle)
-//                .setPositiveButton("OK", null)
-//                .show();
-//    }
+
+    @Override
+    public void onListItemClick(ListView _l, View _v, int _position, long _id) {
+        Object o = this.getListAdapter().getItem(_position);
+        String vehicle = o.toString();
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Vehicle")
+                .setMessage(vehicle)
+                .setPositiveButton("OK", null)
+                .show();
+    }
 
     @Override
     public void DataReceived(ArrayList<Vehicle> vehicles) {
         VehicleAdapter adapter = new VehicleAdapter(MainActivity.mContext, android.R.layout.simple_list_item_1, vehicles);
         setListAdapter(adapter);
     }
-
-
-    private class ModelDataTask extends AsyncTask<Void, Void, ArrayList<Vehicle>> {
-
-        @Override
-        protected ArrayList<Vehicle> doInBackground(Void... voids) {
-            String mData = VehicleUtil.getVehicleData();
-            Toast data = Toast.makeText(MainActivity.mContext, mData.toString(),Toast.LENGTH_SHORT);
-            data.show();
-            ArrayList<Vehicle> vehicles = VehicleUtil.parseVehicleData(mData);
-            return vehicles;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Vehicle> vehicles) {
-            super.onPostExecute(vehicles);
-
-            VehicleAdapter adapter = new VehicleAdapter(MainActivity.mContext, android.R.layout.simple_list_item_1, vehicles);
-            setListAdapter(adapter);
-        }
-    }
-
 }
