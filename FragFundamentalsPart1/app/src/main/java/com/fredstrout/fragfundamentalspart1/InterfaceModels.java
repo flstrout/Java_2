@@ -10,18 +10,18 @@ import android.os.AsyncTask;
 
 import java.util.ArrayList;
 
-public class VehicleInterface extends AsyncTask<Void, Void, ArrayList<Vehicle>> {
+public class InterfaceModels extends AsyncTask<Void, Void, ArrayList<ObjectModels>> {
 
     private ProgressDialog pd;
 
-    public interface VehicleDataReceiver {
-        void DataReceived(ArrayList<Vehicle> _vehicles);
+    public interface ModelDataReceiver {
+        void DataReceived(ArrayList<ObjectModels> _objectModels);
     }
 
-    VehicleDataReceiver mReceiver;
+    ModelDataReceiver oReceiver;
 
-    public VehicleInterface(VehicleDataReceiver _receiver) {
-        mReceiver = _receiver;
+    public InterfaceModels(ModelDataReceiver _receiver) {
+        oReceiver = _receiver;
     }
 
     @Override
@@ -42,19 +42,19 @@ public class VehicleInterface extends AsyncTask<Void, Void, ArrayList<Vehicle>> 
     }
 
     @Override
-    protected ArrayList<Vehicle> doInBackground(Void... params) {
-        String vData = VehicleUtil.getVehicleData();
-        ArrayList<Vehicle> vehicles = VehicleUtil.parseVehicleData(vData);
-        return vehicles;
+    protected ArrayList<ObjectModels> doInBackground(Void... params) {
+        String vData = UtilityModels.getModelData();
+        ArrayList<ObjectModels> objectModels = UtilityModels.parseModelData(vData);
+        return objectModels;
     }
 
     @Override
-    protected void onPostExecute(ArrayList<Vehicle> vehicles) {
-        super.onPostExecute(vehicles);
+    protected void onPostExecute(ArrayList<ObjectModels> objectModels) {
+        super.onPostExecute(objectModels);
 
         if (pd != null) {
             pd.dismiss();
         }
-        mReceiver.DataReceived(vehicles);
+        oReceiver.DataReceived(objectModels);
     }
 }

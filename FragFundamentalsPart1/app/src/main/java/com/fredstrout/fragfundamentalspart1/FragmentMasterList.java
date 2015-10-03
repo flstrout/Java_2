@@ -7,31 +7,20 @@ package com.fredstrout.fragfundamentalspart1;
 
 import android.app.AlertDialog;
 import android.app.ListFragment;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MasterListFragment extends ListFragment implements VehicleInterface.VehicleDataReceiver{
-    public static final String TAG = "MasterListFragment.TAG";
-    public static MasterListFragment newInstance() {
-        MasterListFragment frag = new MasterListFragment();
-        return frag;
-    }
-
+public class FragmentMasterList extends ListFragment implements InterfaceVehicles.VehicleDataReceiver{
+    public static final String TAG = "FragmentMasterList.TAG";
 
     @Override
     public void onActivityCreated(Bundle _savedInstanceState) {
         super.onActivityCreated(_savedInstanceState);
 
-        VehicleInterface task = new VehicleInterface(this);
+        InterfaceVehicles task = new InterfaceVehicles(this);
         task.execute();
     }
 
@@ -40,15 +29,15 @@ public class MasterListFragment extends ListFragment implements VehicleInterface
         Object o = this.getListAdapter().getItem(_position);
         String vehicle = o.toString();
         new AlertDialog.Builder(getActivity())
-                .setTitle("Vehicle")
+                .setTitle("ObjectVehicles")
                 .setMessage(vehicle)
                 .setPositiveButton("OK", null)
                 .show();
     }
 
     @Override
-    public void DataReceived(ArrayList<Vehicle> vehicles) {
-        VehicleAdapter adapter = new VehicleAdapter(MainActivity.mContext, android.R.layout.simple_list_item_1, vehicles);
+    public void DataReceived(ArrayList<ObjectVehicles> objectVehicles) {
+        AdapterVehicles adapter = new AdapterVehicles(MainActivity.mContext, android.R.layout.simple_list_item_1, objectVehicles);
         setListAdapter(adapter);
     }
 }

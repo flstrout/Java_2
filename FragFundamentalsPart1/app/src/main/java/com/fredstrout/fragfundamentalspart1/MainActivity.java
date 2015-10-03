@@ -8,16 +8,12 @@ package com.fredstrout.fragfundamentalspart1;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
-import android.os.AsyncTask;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
+import android.widget.AdapterView;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends FragmentActivity {
 
     public static Context mContext;
 
@@ -28,14 +24,20 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
-        FragmentManager mgr = getFragmentManager();
-        FragmentTransaction trans = mgr.beginTransaction();
+//        FragmentManager mgr = getFragmentManager();
+//        FragmentTransaction trans = mgr.beginTransaction();
+//
+//        FragmentMasterList frag = FragmentMasterList.newInstance();
+//        trans.replace(R.id.fragment_container, frag, FragmentMasterList.TAG);
+//
+//        trans.commit();
 
-        MasterListFragment frag = MasterListFragment.newInstance();
-        trans.replace(R.id.fragment_container, frag, MasterListFragment.TAG);
-
-        trans.commit();
+//        FragmentManager mgr1 = getFragmentManager();
+//        FragmentTransaction trans1 = mgr1.beginTransaction();
+//
+//        FragmentModelList frag1 = FragmentModelList.newInstance();
+//        trans1.replace(R.id.fragment_container1, frag, FragmentModelList.TAG);
+//
+//        trans1.commit();
     }
-
-
 }

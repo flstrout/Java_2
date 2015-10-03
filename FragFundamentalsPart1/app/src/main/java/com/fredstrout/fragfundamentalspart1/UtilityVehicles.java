@@ -17,8 +17,8 @@ import java.util.ArrayList;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class VehicleUtil {
-    private static final String TAG = "VehicleUtil";
+public class UtilityVehicles {
+    private static final String TAG = "UtilityVehicles";
     private static final String MAIN_URL = "https://api.edmunds.com/api/vehicle/v2/makes?fmt=json&api_key=23n4wrcrhkucaevmmp9x7vf8";
 
     public static String getVehicleData() {
@@ -39,9 +39,9 @@ public class VehicleUtil {
         return null;
     }
 
-    public static ArrayList<Vehicle> parseVehicleData (String _vehicleData) {
+    public static ArrayList<ObjectVehicles> parseVehicleData (String _vehicleData) {
 
-        ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
+        ArrayList<ObjectVehicles> objectVehicles = new ArrayList<ObjectVehicles>();
 
         try {
             JSONObject obj = new JSONObject(_vehicleData);
@@ -54,12 +54,12 @@ public class VehicleUtil {
                 for (int p = 0; p < modelArr.length(); p++) {
                     JSONObject modelObj = modelArr.getJSONObject(p);
                     String model = modelObj.getString("name");
-                    vehicles.add(new Vehicle(make, model));
+                    objectVehicles.add(new ObjectVehicles(make, model));
                 }
             }
         } catch (JSONException e){
             e.printStackTrace();
         }
-        return vehicles;
+        return objectVehicles;
     }
 }

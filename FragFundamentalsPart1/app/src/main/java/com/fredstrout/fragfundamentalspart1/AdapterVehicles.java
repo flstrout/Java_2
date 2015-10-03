@@ -14,36 +14,36 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class VehicleAdapter extends BaseAdapter {
+public class AdapterVehicles extends BaseAdapter {
 
     public final static int ID_CONSTANT = 0x00010001;
 
     Context mContext;
-    ArrayList<Vehicle> mVehicles;
+    ArrayList<ObjectVehicles> mObjectVehicles;
 
-    public VehicleAdapter(Context _c, int simple_list_item_1, ArrayList<Vehicle> _vehicles){
+    public AdapterVehicles(Context _c, int simple_list_item_1, ArrayList<ObjectVehicles> _objectVehicles){
         mContext = _c;
-        mVehicles = _vehicles;
+        mObjectVehicles = _objectVehicles;
     }
 
     @Override
     public int getCount() {
 
-        if (mVehicles == null) {
+        if (mObjectVehicles == null) {
             return 0;
         }
 
-        return mVehicles.size();
+        return mObjectVehicles.size();
     }
 
     @Override
-    public Vehicle getItem(int position) {
+    public ObjectVehicles getItem(int position) {
 
-        if (mVehicles == null || position < 0 || position >= mVehicles.size()) {
+        if (mObjectVehicles == null || position < 0 || position >= mObjectVehicles.size()) {
             return null;
         }
 
-        return mVehicles.get(position);
+        return mObjectVehicles.get(position);
     }
 
     @Override
@@ -58,15 +58,15 @@ public class VehicleAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(android.R.layout.simple_list_item_2, parent, false);
         }
 
-        Vehicle vehicle = getItem(position);
+        ObjectVehicles objectVehicles = getItem(position);
 
-        if (vehicle != null) {
+        if (objectVehicles != null) {
 
             TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
-            tv.setText(vehicle.getMake());
+            tv.setText(objectVehicles.getMake());
 
             tv = (TextView) convertView.findViewById(android.R.id.text2);
-            tv.setText(vehicle.getModel());
+            tv.setText(objectVehicles.getModel());
         }
 
         return convertView;

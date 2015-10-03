@@ -5,25 +5,20 @@ package com.fredstrout.fragfundamentalspart1;
 // 9/30/2015
 // Java 2 - Project 1
 
-public class Vehicle {
+public class ObjectModels {
 
-    private String mMake;
     private String mModel;
+    private String mID;
 
-    public Vehicle() {
-        mMake = mModel = "";
+    public ObjectModels() {
+        mModel = mID = "";
     }
 
-    public Vehicle(String _make, String _model) {
-
-        mMake = _make;
-        mModel = _model;
-
-    }
-
-    public String getMake() { return mMake; }
+    public ObjectModels(String _model, String _id) { mModel = _model; mID = _id; }
 
     public String getModel() { return mModel; }
+
+    public String getID() { return mID; }
 
     @Override
     public String toString() { return mModel; }
