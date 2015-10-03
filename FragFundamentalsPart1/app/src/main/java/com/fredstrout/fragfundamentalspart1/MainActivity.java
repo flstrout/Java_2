@@ -5,13 +5,12 @@ package com.fredstrout.fragfundamentalspart1;
 // 9/30/2015
 // Java 2 - Project 1
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.AdapterView;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity {
 
@@ -22,7 +21,10 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         mContext = this;
+
+
 
 //        FragmentManager mgr = getFragmentManager();
 //        FragmentTransaction trans = mgr.beginTransaction();
@@ -40,4 +42,6 @@ public class MainActivity extends FragmentActivity {
 //
 //        trans1.commit();
     }
+
+
 }

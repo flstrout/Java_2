@@ -25,22 +25,22 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
         mReceiver = _receiver;
     }
 
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();;
-        pd = new ProgressDialog (MainActivity.mContext);
-        pd.setTitle("File Transfer");
-        pd.setMessage("Downloading Data");
-        pd.setCancelable(false);
-        pd.setIndeterminate(true);
-        pd.setProgress(0);
-        pd.show();
-    }
+//    @Override
+//    protected void onPreExecute() {
+//        super.onPreExecute();;
+//        pd = new ProgressDialog (MainActivity.mContext);
+//        pd.setTitle("File Transfer");
+//        pd.setMessage("Downloading Data");
+//        pd.setCancelable(false);
+//        pd.setIndeterminate(true);
+//        pd.setProgress(0);
+//        pd.show();
+//    }
 
-    @Override
-    protected void onProgressUpdate(Void... values) {
-        super.onProgressUpdate(values);
-    }
+//    @Override
+//    protected void onProgressUpdate(Void... values) {
+//        super.onProgressUpdate(values);
+//    }
 
     @Override
     protected ArrayList<ObjectVehicles> doInBackground(Void... params) {
@@ -53,9 +53,9 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
     protected void onPostExecute(ArrayList<ObjectVehicles> objectVehicles) {
         super.onPostExecute(objectVehicles);
 
-        if (pd != null) {
-            pd.dismiss();
-        }
+//        if (pd != null) {
+//            pd.dismiss();
+//        }
         mReceiver.DataReceived(objectVehicles);
     }
 }
