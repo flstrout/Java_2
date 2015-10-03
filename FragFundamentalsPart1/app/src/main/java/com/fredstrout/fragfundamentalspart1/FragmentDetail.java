@@ -1,12 +1,15 @@
 package com.fredstrout.fragfundamentalspart1;
 
+// FragFundamentalsPart1
+// Created by Fred L. Strout
+// 9/30/2015
+// Java 2 - Project 1
+
 import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 public class FragmentDetail extends Fragment{
 

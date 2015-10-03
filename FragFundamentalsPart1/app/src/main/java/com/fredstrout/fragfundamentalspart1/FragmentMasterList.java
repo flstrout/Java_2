@@ -31,6 +31,8 @@ public class FragmentMasterList extends ListFragment implements InterfaceVehicle
         } else {
             Toast noNetwork = Toast.makeText(MainActivity.mContext, "Network Not Available!", Toast.LENGTH_SHORT);
             noNetwork.show();
+            InterfaceVehicles task = new InterfaceVehicles(this);
+            task.execute();
         }
     }
 
