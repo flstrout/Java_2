@@ -23,8 +23,6 @@ import java.util.ArrayList;
 
 public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVehicles>>{
 
-    DataHolder dHolder;
-
     public interface VehicleDataReceiver {
         void DataReceived(ArrayList<ObjectVehicles> _objectVehicles);
     }
@@ -40,14 +38,14 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
         if (netCheck()) {
             String vData = UtilityVehicles.getVehicleData();
             ArrayList<ObjectVehicles> objectVehicles = UtilityVehicles.parseVehicleData(vData);
-            writeToFile(MainActivity.mContext, "vehicles", objectVehicles.toString());
+            writeToFile("vehicles", objectVehicles);
             return objectVehicles;
         } else {
 
-//            readFromFile("vehicles");
+            ArrayList<ObjectVehicles> objectVehicles = readFromFile("vehicles");
 
-            ArrayList<ObjectVehicles> objectVehicles = new ArrayList<>();
-            objectVehicles.add(new ObjectVehicles("Fred", "Strout"));
+//            ArrayList<ObjectVehicles> objectVehicles = new ArrayList<>();
+//            objectVehicles.add(new ObjectVehicles("Fred", "Strout"));
             return objectVehicles;
         }
     }
@@ -66,27 +64,25 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
         mReceiver.DataReceived(objectVehicles);
     }
 
-    private void writeToFile(Context _c, String _filename, String _data) {
-        File external = _c.getExternalFilesDir(null);
+    private void writeToFile(String _filename, ArrayList<ObjectVehicles> _data) {
+        File external = MainActivity.mContext.getExternalFilesDir(null);
         File file = new File(external, _filename);
 
         try {
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            if(dHolder == null) {
-                dHolder = new DataHolder();
-            }
-            dHolder.setData(_data);
-
-            oos.writeObject(dHolder);
+            oos.writeObject(_data);
             oos.close();
+            fos.close();
         } catch(Exception e) {
             e.printStackTrace();
         }
     }
 
-    private String readFromFile(String _filename) {
+    private ArrayList<ObjectVehicles> readFromFile(String _filename) {
+        ArrayList<ObjectVehicles> savedArrayList = new ArrayList<>();
+
         File external = MainActivity.mContext.getExternalFilesDir(null);
         File file = new File(external, _filename);
 
@@ -94,13 +90,13 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
                 FileInputStream fin = new FileInputStream(file);
 
                 // Wrapping our stream
-                ObjectInputStream oin = new ObjectInputStream(fin);
+                ObjectInputStream ois = new ObjectInputStream(fin);
 
                 // Reading in our object
-                dHolder = (DataHolder)oin.readObject();
+                savedArrayList = (ArrayList<ObjectVehicles>)ois.readObject();
                 // Closing our object stream which also closes the wrapped stream.
-                oin.close();
-                return dHolder.getData();
+                ois.close();
+                return savedArrayList;
             } catch(Exception e) {
                 e.printStackTrace();
             }
