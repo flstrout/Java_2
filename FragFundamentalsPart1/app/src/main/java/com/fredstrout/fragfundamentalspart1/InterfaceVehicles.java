@@ -17,12 +17,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVehicles>>{
 
-    private ProgressDialog pd;
+    DataHolder dHolder;
 
     public interface VehicleDataReceiver {
         void DataReceived(ArrayList<ObjectVehicles> _objectVehicles);
@@ -46,7 +47,7 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
 //            readFromFile("vehicles");
 
             ArrayList<ObjectVehicles> objectVehicles = new ArrayList<>();
-            objectVehicles.add (new ObjectVehicles("Fred", "Strout"));
+            objectVehicles.add(new ObjectVehicles("Fred", "Strout"));
             return objectVehicles;
         }
     }
@@ -72,11 +73,15 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
         try {
             FileOutputStream fos = new FileOutputStream(file);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            // Write bytes to the stream
-            oos.write(_data.getBytes());
-            // Close the stream to save the file.
-            fos.close();
-        } catch (IOException e) {
+
+            if(dHolder == null) {
+                dHolder = new DataHolder();
+            }
+            dHolder.setData(_data);
+
+            oos.writeObject(dHolder);
+            oos.close();
+        } catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -85,26 +90,20 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
         File external = MainActivity.mContext.getExternalFilesDir(null);
         File file = new File(external, _filename);
 
-        try {
-            FileInputStream fin = new FileInputStream(file);
-            InputStreamReader inReader = new InputStreamReader(fin);
-            BufferedReader reader = new BufferedReader(inReader);
+            try {
+                FileInputStream fin = new FileInputStream(file);
 
-            // Reading data from our file using the reader
-            // and storing it our string buffer.
-            StringBuffer buffer = new StringBuffer();
-            String text = null;
-            // Make sure a line of text is available to be read.
-            while((text = reader.readLine()) != null) {
-                buffer.append(text + "\n");
+                // Wrapping our stream
+                ObjectInputStream oin = new ObjectInputStream(fin);
+
+                // Reading in our object
+                dHolder = (DataHolder)oin.readObject();
+                // Closing our object stream which also closes the wrapped stream.
+                oin.close();
+                return dHolder.getData();
+            } catch(Exception e) {
+                e.printStackTrace();
             }
-            // Close the reader and underlying stream.
-            reader.close();
-            // Convert the buffer to a string.
-            return buffer.toString();
-        } catch(IOException e) {
-            e.printStackTrace();
-        }
 
         return null;
     }

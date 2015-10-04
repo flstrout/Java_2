@@ -20,6 +20,7 @@ import java.util.ArrayList;
 
 public class FragmentMasterList extends ListFragment implements InterfaceVehicles.VehicleDataReceiver{
     public static final String TAG = "FragmentMasterList.TAG";
+    public static String selVehicle;
 
     @Override
     public void onActivityCreated(Bundle _savedInstanceState) {
@@ -39,13 +40,11 @@ public class FragmentMasterList extends ListFragment implements InterfaceVehicle
     @Override
     public void onListItemClick(ListView _l, View _v, int _position, long _id) {
         Object o = this.getListAdapter().getItem(_position);
-        String vehicle = o.toString();
 
-//        TextView txtModel= (TextView) onCreateView.findViewById(R.id.txt_model);
-//        txtModel.setText(vehicle);
+        selVehicle = o.toString();
         new AlertDialog.Builder(getActivity())
                 .setTitle("ObjectVehicles")
-                .setMessage(vehicle)
+                .setMessage(selVehicle)
                 .setPositiveButton("OK", null)
                 .show();
     }
@@ -55,6 +54,7 @@ public class FragmentMasterList extends ListFragment implements InterfaceVehicle
         AdapterVehicles adapter = new AdapterVehicles(MainActivity.mContext, android.R.layout.simple_list_item_1, objectVehicles);
         setListAdapter(adapter);
     }
+
     public boolean netCheck() {
 
         ConnectivityManager mgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
