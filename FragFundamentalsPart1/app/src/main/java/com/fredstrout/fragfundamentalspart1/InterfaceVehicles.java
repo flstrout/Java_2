@@ -44,8 +44,6 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
 
             ArrayList<ObjectVehicles> objectVehicles = readFromFile("vehicles");
 
-//            ArrayList<ObjectVehicles> objectVehicles = new ArrayList<>();
-//            objectVehicles.add(new ObjectVehicles("Fred", "Strout"));
             return objectVehicles;
         }
     }
@@ -65,6 +63,7 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
     }
 
     private void writeToFile(String _filename, ArrayList<ObjectVehicles> _data) {
+
         File external = MainActivity.mContext.getExternalFilesDir(null);
         File file = new File(external, _filename);
 
@@ -81,7 +80,7 @@ public class InterfaceVehicles extends AsyncTask<Void, Void, ArrayList<ObjectVeh
     }
 
     private ArrayList<ObjectVehicles> readFromFile(String _filename) {
-        ArrayList<ObjectVehicles> savedArrayList = new ArrayList<>();
+        ArrayList<ObjectVehicles> savedArrayList;
 
         File external = MainActivity.mContext.getExternalFilesDir(null);
         File file = new File(external, _filename);
