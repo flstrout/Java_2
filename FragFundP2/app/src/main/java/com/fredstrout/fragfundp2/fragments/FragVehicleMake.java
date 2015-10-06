@@ -1,4 +1,4 @@
-package com.fredstrout.fragfundp2;
+package com.fredstrout.fragfundp2.fragments;
 
 import android.app.Activity;
 import android.app.AlertDialog;
