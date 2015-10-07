@@ -57,11 +57,6 @@ public class FragVehicleMake extends ListFragment {
     public void onListItemClick(ListView _l, View _v, int _position, long _id) {
         String president = (String)_l.getItemAtPosition(_position);
         mListener.displayText(president);
-        new AlertDialog.Builder(getActivity())
-                .setTitle(president)
-                .setMessage(president)
-                .setPositiveButton("OK", null)
-                .show();
     }
 
 }
