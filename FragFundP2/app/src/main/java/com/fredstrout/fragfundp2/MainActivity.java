@@ -1,5 +1,10 @@
 package com.fredstrout.fragfundp2;
 
+// FragFundP2
+// Created by Fred L. Strout
+// 10/06/2015
+// Java 2 - Project 2
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -24,7 +29,6 @@ public class MainActivity extends Activity implements FragVehicleMake.OnRowSelec
                     .replace(R.id.list_container, frag, FragVehicleMake.TAG)
                     .commit();
         }
-
     }
 
     @Override

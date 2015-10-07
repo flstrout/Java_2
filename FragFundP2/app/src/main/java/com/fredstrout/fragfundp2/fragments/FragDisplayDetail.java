@@ -1,5 +1,10 @@
 package com.fredstrout.fragfundp2.fragments;
 
+// FragFundP2
+// Created by Fred L. Strout
+// 10/06/2015
+// Java 2 - Project 2
+
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,9 +14,6 @@ import android.widget.TextView;
 
 import com.fredstrout.fragfundp2.R;
 
-/**
- * Created by fredstrout on 10/6/15.
- */
 public class FragDisplayDetail extends Fragment {
 
     public static final String TAG = "FragDisplayDetail.TAG";
