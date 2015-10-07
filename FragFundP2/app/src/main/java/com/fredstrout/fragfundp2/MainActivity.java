@@ -1,6 +1,7 @@
 package com.fredstrout.fragfundp2;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -9,10 +10,13 @@ import com.fredstrout.fragfundp2.fragments.FragVehicleMake;
 
 public class MainActivity extends Activity implements FragVehicleMake.OnRowSelectedClickListener{
 
+    public static Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mContext = this;
 
         if (savedInstanceState == null){
             FragVehicleMake frag = FragVehicleMake.newInstance();
@@ -26,7 +30,6 @@ public class MainActivity extends Activity implements FragVehicleMake.OnRowSelec
     @Override
     public void displayText(String text) {
 
-        Log.i("Test", "Item Selected: " + text);
         FragDisplayDetail frag = (FragDisplayDetail) getFragmentManager().findFragmentByTag(FragDisplayDetail.TAG);
 
         if (frag == null){
