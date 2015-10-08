@@ -34,7 +34,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class FragVehicleMake extends ListFragment {
+public class FragVehicleMake extends ListFragment implements com.fredstrout.fragfundp2.Utilities.VehicleDataTask.VehicleDataReceiver{
 
     public static final String TAG = "FragVehicleMake.TAG";
     private OnRowSelectedClickListener mListener;
@@ -42,6 +42,24 @@ public class FragVehicleMake extends ListFragment {
     public static FragVehicleMake newInstance() {
         FragVehicleMake frag = new FragVehicleMake();
         return frag;
+    }
+
+    @Override
+    public void DataReceived(ArrayList<ObjectVehicles> objectVehicles) {
+
+        if (netCheck()) {
+
+            ArrayAdapter<ObjectVehicles> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, objectVehicles);
+            setListAdapter(adapter);
+            writeToFile(getContext(), "vehicles", objectVehicles);
+
+        } else {
+
+//                storedVehicles.add(new ObjectVehicles("Not", "Working!"));
+            ArrayList<ObjectVehicles> storedVehicles = (ArrayList<ObjectVehicles>) readFromFile("vehicles");
+            ArrayAdapter<ObjectVehicles> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, storedVehicles);
+            setListAdapter(adapter);
+        }
     }
 
     public interface OnRowSelectedClickListener{
