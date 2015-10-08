@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="Change Text Color" >
+
+        <ListPreference
+            android:key="PREF_LIST"
+            android:summary="Change the color of the application's text."
+            android:title="Text Color"
+            android:entries="@array/entries"
+            android:entryValues="@array/values" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

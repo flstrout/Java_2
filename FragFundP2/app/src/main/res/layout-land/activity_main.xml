@@ -3,14 +3,27 @@
     android:layout_height="fill_parent"
     android:orientation="horizontal">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="fill_parent"
         android:layout_weight="1"
-        android:id="@+id/detail_container"
-        android:background="@color/green">
+        android:orientation="vertical">
 
-    </FrameLayout>
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:id="@+id/detail_container"
+            android:background="@color/green">
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:id="@+id/pref_container"
+            android:background="@color/green">
+        </FrameLayout>
+    </LinearLayout>
 
     <FrameLayout
         android:layout_width="0dp"

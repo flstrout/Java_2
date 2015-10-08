@@ -12,8 +12,10 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.fredstrout.fragfundp2.Utilities.Util;
 import com.fredstrout.fragfundp2.fragments.FragDisplayDetail;
 import com.fredstrout.fragfundp2.fragments.FragVehicleMake;
+import com.fredstrout.fragfundp2.fragments.SettingsFragment;
 
 public class MainActivity extends Activity implements FragVehicleMake.OnRowSelectedClickListener{
 
@@ -22,8 +24,12 @@ public class MainActivity extends Activity implements FragVehicleMake.OnRowSelec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
         mContext = this;
+        mContext.setTheme(R.style.FirstTheme);
+        Util.onActivityCreateSetTheme(this);
+        setContentView(R.layout.activity_main);
+
 
         Toast newToast = Toast.makeText(this, Environment.getExternalStorageState() + ", " + Environment.getExternalStorageDirectory(), Toast.LENGTH_LONG);
         newToast.show();
@@ -34,6 +40,11 @@ public class MainActivity extends Activity implements FragVehicleMake.OnRowSelec
                     .replace(R.id.list_container, frag, FragVehicleMake.TAG)
                     .commit();
         }
+
+        SettingsFragment frag1 = new SettingsFragment();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.pref_container, frag1)
+                .commit();
     }
 
     @Override

@@ -5,4 +5,17 @@
     <string name="action_settings">Settings</string>
     <color name="green">#00ff00</color>
     <color name="blue">#0000ff</color>
+
+    <string-array name="entries">
+        <item>Black</item>
+        <item>Red</item>
+        <item>Yellow</item>
+    </string-array>
+
+    <string-array name="values">
+        <item>Black</item>
+        <item>Red</item>
+        <item>Yellow</item>
+    </string-array>
+
 </resources>
