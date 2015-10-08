@@ -8,7 +8,9 @@ package com.fredstrout.fragfundp2;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.fredstrout.fragfundp2.fragments.FragDisplayDetail;
 import com.fredstrout.fragfundp2.fragments.FragVehicleMake;
@@ -22,6 +24,9 @@ public class MainActivity extends Activity implements FragVehicleMake.OnRowSelec
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContext = this;
+
+        Toast newToast = Toast.makeText(this, Environment.getExternalStorageState() + ", " + Environment.getExternalStorageDirectory(), Toast.LENGTH_LONG);
+        newToast.show();
 
         if (savedInstanceState == null){
             FragVehicleMake frag = FragVehicleMake.newInstance();
@@ -46,4 +51,5 @@ public class MainActivity extends Activity implements FragVehicleMake.OnRowSelec
             frag.setDisplayText(text);
         };
     }
+
 }

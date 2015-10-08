@@ -5,7 +5,12 @@ package com.fredstrout.fragfundp2.Utilities;
 // 10/06/2015
 // Java 2 - Project 2
 
-public class ObjectVehicles {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class ObjectVehicles extends ArrayList implements Serializable{
+
+    private static final long serialVersionUID = 8736847634070552888L;
 
     private String mMake;
     private String mModel;
