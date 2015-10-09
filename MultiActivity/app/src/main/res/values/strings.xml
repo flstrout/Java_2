@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MultiActivity</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="NewActivity">New Activity</string>
+    <string name="MainActivity">Main Activity</string>
+    <string name="DetailActivity">Detail Activity</string>
+</resources>
