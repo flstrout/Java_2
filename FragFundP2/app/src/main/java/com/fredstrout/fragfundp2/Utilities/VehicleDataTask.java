@@ -1,18 +1,13 @@
 package com.fredstrout.fragfundp2.Utilities;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+// FragFundP2
+// Created by Fred L. Strout
+// 10/06/2015
+// Java 2 - Project 2
+
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
-
-import com.fredstrout.fragfundp2.MainActivity;
-
 import java.util.ArrayList;
 
-/**
- * Created by fredstrout on 10/7/15.
- */
 public class VehicleDataTask extends AsyncTask<Void, Void, ArrayList<ObjectVehicles>> {
 
     public interface VehicleDataReceiver {

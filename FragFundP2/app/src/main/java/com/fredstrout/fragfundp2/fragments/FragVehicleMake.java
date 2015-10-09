@@ -55,7 +55,6 @@ public class FragVehicleMake extends ListFragment implements com.fredstrout.frag
 
         } else {
 
-//                storedVehicles.add(new ObjectVehicles("Not", "Working!"));
             ArrayList<ObjectVehicles> storedVehicles = (ArrayList<ObjectVehicles>) readFromFile("vehicles");
             ArrayAdapter<ObjectVehicles> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, storedVehicles);
             setListAdapter(adapter);
@@ -109,14 +108,15 @@ public class FragVehicleMake extends ListFragment implements com.fredstrout.frag
         }
     }
 
+
+//    Data Storage
+//    Write to Store
     private void writeToFile(Context _c, String _filename, ArrayList<ObjectVehicles> _data) {
         File external = _c.getExternalFilesDir(null);
         if (external == null) {
-            throw new IllegalStateException("Screaming monkeys - what is happening?!");
+            throw new IllegalStateException("Houston, we have a problem!?!");
         }
-
-        File file = new File(external, _filename);
-
+//        File file = new File(external, _filename);
         try {
             FileOutputStream fos = MainActivity.mContext.openFileOutput ( _filename, Context.MODE_PRIVATE );
 
@@ -132,6 +132,7 @@ public class FragVehicleMake extends ListFragment implements com.fredstrout.frag
         Log.i("Test", external.getAbsolutePath());
     }
 
+//    Pull from Store
     private ArrayList readFromFile(String _filename) {
         File external = getContext().getExternalFilesDir(null);
         File file = new File(external, _filename);
@@ -151,6 +152,7 @@ public class FragVehicleMake extends ListFragment implements com.fredstrout.frag
         return null;
     }
 
+//    Check for Network Connectivity
     public boolean netCheck() {
 
         ConnectivityManager mgr = (ConnectivityManager) MainActivity.mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -166,6 +168,7 @@ public class FragVehicleMake extends ListFragment implements com.fredstrout.frag
         return false;
     }
 
+//    Get this show on the road => Do something to populate the list
     @Override
     public void onActivityCreated(Bundle _savedInstanceState) {
         super.onActivityCreated(_savedInstanceState);
@@ -174,6 +177,7 @@ public class FragVehicleMake extends ListFragment implements com.fredstrout.frag
         task.execute();
     }
 
+//    Get data from the list to populate the detail view
     @Override
     public void onListItemClick(ListView _l, View _v, int _position, long _id) {
 

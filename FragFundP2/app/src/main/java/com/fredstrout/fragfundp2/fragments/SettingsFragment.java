@@ -1,5 +1,10 @@
 package com.fredstrout.fragfundp2.fragments;
 
+// FragFundP2
+// Created by Fred L. Strout
+// 10/06/2015
+// Java 2 - Project 2
+
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
@@ -7,9 +12,6 @@ import android.preference.PreferenceFragment;
 import com.fredstrout.fragfundp2.R;
 import com.fredstrout.fragfundp2.Utilities.Util;
 
-/**
- * Created by fredstrout on 10/8/15.
- */
 public class SettingsFragment extends PreferenceFragment {
 
     @Override
