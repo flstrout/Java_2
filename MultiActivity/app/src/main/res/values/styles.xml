@@ -1,8 +1,13 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="AppPadding">
+        <item name="android:padding">16dp</item>
+    </style>
+
 
 </resources>
