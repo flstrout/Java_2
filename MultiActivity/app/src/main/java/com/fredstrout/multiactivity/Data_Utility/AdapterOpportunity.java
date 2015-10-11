@@ -58,15 +58,15 @@ public class AdapterOpportunity extends BaseAdapter {
             convertView = LayoutInflater.from(mContext).inflate(android.R.layout.simple_list_item_2, parent, false);
         }
 
-        Opportunity vehicle = getItem(position);
+        Opportunity thisOpportunity = getItem(position);
 
-        if (vehicle != null) {
+        if (thisOpportunity != null) {
 
             TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
-            tv.setText(vehicle.getCustomer());
+            tv.setText(thisOpportunity.getCustomer());
 
             tv = (TextView) convertView.findViewById(android.R.id.text2);
-            tv.setText(vehicle.getResolution());
+            tv.setText("   " + thisOpportunity.getResolution());
         }
 
         return convertView;

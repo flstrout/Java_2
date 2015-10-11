@@ -7,6 +7,7 @@ package com.fredstrout.multiactivity.Main_Activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +18,14 @@ import com.fredstrout.multiactivity.R;
 
 public class MainActivity extends FragmentActivity {
 
+    public static Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mContext = this;
 
         FragmentManager mgr = getFragmentManager();
         FragmentTransaction trans = mgr.beginTransaction();

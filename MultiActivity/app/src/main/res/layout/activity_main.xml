@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/master_container"
+    style="@style/AppPadding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/AppPadding"
     tools:context=".MainActivity"
     android:orientation="vertical">
 

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.fredstrout.multiactivity.Data_Utility.AdapterOpportunity;
 import com.fredstrout.multiactivity.Data_Utility.Opportunity;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class FragmentMain extends ListFragment{
         opportunities.add(new Opportunity("John Adams", "Free Lg Fry", "Fries were cold"));
         opportunities.add(new Opportunity("Thomas Jefferson", "Free Big Mac", "Sandwich was missing the meat"));
 
-        ArrayAdapter<Opportunity> adapter = new ArrayAdapter<Opportunity>(getActivity(), android.R.layout.simple_list_item_1, opportunities);
+        AdapterOpportunity adapter = new AdapterOpportunity(MainActivity.mContext, opportunities);
         setListAdapter(adapter);
     }
     @Override
