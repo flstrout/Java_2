@@ -4,15 +4,23 @@
     style="@style/AppPadding"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#bf0c0c"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <TextView android:text="@string/Opportunities" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView android:text="@string/Opportunities" android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        android:paddingLeft="8dp"
+        android:paddingBottom="10dp"/>
 
     <FrameLayout
         android:id="@+id/list_container"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"></FrameLayout>
+        android:layout_height="wrap_content"
+        android:background="#ffffff">
+    </FrameLayout>
 
 </LinearLayout>
