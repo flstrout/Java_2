@@ -2,13 +2,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#bf0c0c"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".NewActivity">
+    tools:context=".NewActivity"
+    android:orientation="vertical">
 
-    <TextView android:text="@string/NewActivity" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <TextView android:text="@string/NewActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="6dp"
+        android:text="Promised Resolution:"
+        android:textColor="#ffcc00"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/resolution_promised"
+        android:background="#ffffff"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="6dp"
+        android:text="Promised Resolution:"
+        android:textColor="#ffcc00"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/name_customer"
+        android:background="#ffffff"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="6dp"
+        android:text="Promised Resolution:"
+        android:textColor="#ffcc00"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:id="@+id/problem"
+        android:background="#ffffff"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Save"
+        android:background="#00ee00"/>
 
 </LinearLayout>

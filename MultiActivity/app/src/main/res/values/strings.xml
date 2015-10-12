@@ -1,7 +1,10 @@
 <resources>
     <string name="app_name">MultiActivity</string>
     <string name="action_settings">Settings</string>
-    <string name="NewActivity">New Activity</string>
-    <string name="DetailActivity">Detail Activity</string>
-    <string name="Opportunities">Open Opportunities</string>
+    <string name="NewActivity">New Opportunity</string>
+    <string name="DetailActivity">Review Opportunity</string>
+    <string name="Opportunities">OPEN OPPORTUNITIES</string>
+    <string name="lblCustomer">Customer</string>
+    <string name="lblResolution">Promised Resolution</string>
+    <string name="lblOpportunities">Opportunity</string>
 </resources>

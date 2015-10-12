@@ -23,7 +23,6 @@ public class FragmentMain extends ListFragment{
     public static FragmentMain newInstance() {
         FragmentMain frag = new FragmentMain();
         return frag;
-
     }
 
     @Override
