@@ -1,5 +1,7 @@
 package com.fredstrout.multiactivity.New_Activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -7,12 +9,14 @@ import android.view.MenuItem;
 
 import com.fredstrout.multiactivity.R;
 
-public class NewActivity extends AppCompatActivity {
+public class NewActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new);
+
+        Intent receive = getIntent();
     }
 
     @Override

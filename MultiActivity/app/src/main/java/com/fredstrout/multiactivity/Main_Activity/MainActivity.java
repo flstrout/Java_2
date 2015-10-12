@@ -8,6 +8,7 @@ package com.fredstrout.multiactivity.Main_Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.fredstrout.multiactivity.New_Activity.NewActivity;
 import com.fredstrout.multiactivity.R;
 
 public class MainActivity extends FragmentActivity {
@@ -55,6 +57,8 @@ public class MainActivity extends FragmentActivity {
         switch (id) {
             case R.id.action_new:
                 Toast.makeText(this, "New Clicked", Toast.LENGTH_SHORT).show();
+                Intent newIntent = new Intent(this, NewActivity.class);
+                startActivity(newIntent);
                 return true;
             case R.id.action_settings:
                 Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
