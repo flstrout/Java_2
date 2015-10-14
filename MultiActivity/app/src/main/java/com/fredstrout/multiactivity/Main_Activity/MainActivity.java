@@ -5,6 +5,7 @@ package com.fredstrout.multiactivity.Main_Activity;
 //    MultiActivity
 //    10/9/2015
 
+import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -16,12 +17,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.fredstrout.multiactivity.Data_Utility.Opportunity;
+import com.fredstrout.multiactivity.Detail_Activity.DetailActivity;
 import com.fredstrout.multiactivity.New_Activity.NewActivity;
 import com.fredstrout.multiactivity.R;
 
-public class MainActivity extends FragmentActivity {
+import java.util.ArrayList;
 
+public class MainActivity extends FragmentActivity implements FragmentMain.OnRowClickedListener{
+
+    public static final int REQUESTCODE = 1;
+    public static final String DELETEOPPORTUNITYEXTRA = "com.fredstrout.multiactivity.Delete";
     public static Context mContext;
+    private ArrayList<Opportunity> allOpportunities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,4 +75,32 @@ public class MainActivity extends FragmentActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if( resultCode == Activity.RESULT_OK && requestCode == REQUESTCODE){
+
+            allOpportunities.remove(data.getIntExtra(DELETEOPPORTUNITYEXTRA, 0));
+            FragmentMain fm = (FragmentMain) getFragmentManager().findFragmentById(R.id.list_container);
+            fm.updateListAdapter();
+        }
+    }
+
+    @Override
+    public void viewOpportunity(int position) {
+
+        Intent detailIntent = new Intent (this, DetailActivity.class);
+        detailIntent.putExtra(DetailActivity.OPPORTUNITYEXTRA, allOpportunities.get(position));
+        detailIntent.putExtra(DetailActivity.DELETEEXTRA,position);
+        startActivityForResult(detailIntent, REQUESTCODE);
+
+    }
+
+    @Override
+    public void getOpportunity(ArrayList<Opportunity> opportunity) {
+        allOpportunities = opportunity;
+    }
+
+
 }

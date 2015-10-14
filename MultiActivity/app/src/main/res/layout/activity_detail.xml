@@ -21,7 +21,9 @@
         android:textColor="#ffffff"
         android:textSize="14dp"/>
 
-    <TextView android:text="Test Customer" android:layout_width="wrap_content"
+    <TextView android:text="Test Customer"
+        android:id="@+id/the_customer"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#ffcc00"
         android:paddingBottom="14dp"
@@ -35,7 +37,8 @@
         android:orientation="vertical"
         android:background="@drawable/rectangle">
 
-        <TextView android:text="@string/lblResolution" android:layout_width="wrap_content"
+        <TextView android:text="@string/lblResolution"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="4dp"
             android:paddingBottom="2dp"
@@ -43,7 +46,9 @@
             android:textColor="#000000"
             android:textSize="14dp"/>
 
-        <TextView android:text="Make them happy!" android:layout_width="wrap_content"
+        <TextView android:text="Make them happy!"
+            android:id="@+id/the_promise"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="6dp"
             android:textColor="#bf0c0c"
@@ -51,7 +56,8 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <TextView android:text="@string/lblOpportunities" android:layout_width="wrap_content"
+    <TextView android:text="@string/lblOpportunities"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="14dp"
         android:paddingBottom="2dp"
@@ -59,7 +65,9 @@
         android:textColor="#ffffff"
         android:textSize="14dp"/>
 
-    <TextView android:text="What was wrong?" android:layout_width="wrap_content"
+    <TextView android:text="What was wrong?"
+        android:id="@+id/the_opportunity"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="6dp"
         android:paddingBottom="18dp"
@@ -72,6 +80,7 @@
         android:layout_height="40dp"
         android:layout_gravity="center_horizontal"
         android:text="Make It Right!"
-        android:background="#00ee00"/>
+        android:background="#00ee00"
+        android:onClick="mirOnClick"/>
 
 </LinearLayout>

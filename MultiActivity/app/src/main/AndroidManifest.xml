@@ -23,6 +23,12 @@
             android:label="@string/app_name" >
 
         </activity>
+
+        <activity
+            android:name=".Detail_Activity.DetailActivity"
+            android:label="@string/app_name" >
+
+        </activity>
     </application>
 
 </manifest>
