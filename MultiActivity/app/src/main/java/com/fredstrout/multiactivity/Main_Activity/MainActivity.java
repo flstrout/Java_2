@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -21,6 +22,11 @@ import com.fredstrout.multiactivity.Detail_Activity.DetailActivity;
 import com.fredstrout.multiactivity.New_Activity.NewActivity;
 import com.fredstrout.multiactivity.R;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements FragmentMain.OnRowClickedListener{
@@ -28,6 +34,7 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
     public static final int REQUESTCODE1 = 1;
     public static final int REQUESTCODE2 = 2;
     public static final String DELETEOPPORTUNITYEXTRA = "com.fredstrout.multiactivity.Delete";
+    public static final String FILENAME = "opportunities.dat";
     public static Context mContext;
     private ArrayList<Opportunity> allOpportunities;
 
@@ -83,8 +90,8 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
         if( resultCode == Activity.RESULT_OK && requestCode == REQUESTCODE1){
 
             allOpportunities.remove(data.getIntExtra(DELETEOPPORTUNITYEXTRA, 0));
-            FragmentMain fm = (FragmentMain) getFragmentManager().findFragmentById(R.id.list_container);
-            fm.updateListAdapter();
+//            FragmentMain fm = (FragmentMain) getFragmentManager().findFragmentById(R.id.list_container);
+//            fm.updateListAdapter();
         }
         if ( resultCode == Activity.RESULT_OK && requestCode == REQUESTCODE2){
 
@@ -92,9 +99,11 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
             String mResult = data.getStringExtra("result");
             String mProblem = data.getStringExtra("problem");
             allOpportunities.add(new Opportunity(mName, mResult, mProblem));
-            FragmentMain fm = (FragmentMain) getFragmentManager().findFragmentById(R.id.list_container);
-            fm.updateListAdapter();
+
         }
+        writeToFile(FILENAME, allOpportunities);
+        FragmentMain fm = (FragmentMain) getFragmentManager().findFragmentById(R.id.list_container);
+        fm.updateListAdapter();
     }
 
     @Override
@@ -102,7 +111,7 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
 
         Intent detailIntent = new Intent (this, DetailActivity.class);
         detailIntent.putExtra(DetailActivity.OPPORTUNITYEXTRA, allOpportunities.get(position));
-        detailIntent.putExtra(DetailActivity.DELETEEXTRA,position);
+        detailIntent.putExtra(DetailActivity.DELETEEXTRA, position);
         startActivityForResult(detailIntent, REQUESTCODE1);
     }
 
@@ -110,4 +119,26 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
     public void getOpportunity(ArrayList<Opportunity> opportunity) {
         allOpportunities = opportunity;
     }
+
+    private void writeToFile(String _filename, ArrayList<Opportunity> _data) {
+        File external = getExternalFilesDir(null);
+        Log.i("File", external.getAbsolutePath());
+        File file = new File(external, _filename);
+
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+
+            if(allOpportunities == null) {
+                allOpportunities = new ArrayList<Opportunity>();
+            }
+
+            oos.writeObject(allOpportunities);
+            oos.close();
+            fos.close();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
