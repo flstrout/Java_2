@@ -11,7 +11,6 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,7 +25,8 @@ import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements FragmentMain.OnRowClickedListener{
 
-    public static final int REQUESTCODE = 1;
+    public static final int REQUESTCODE1 = 1;
+    public static final int REQUESTCODE2 = 2;
     public static final String DELETEOPPORTUNITYEXTRA = "com.fredstrout.multiactivity.Delete";
     public static Context mContext;
     private ArrayList<Opportunity> allOpportunities;
@@ -66,7 +66,8 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
             case R.id.action_new:
                 Toast.makeText(this, "New Clicked", Toast.LENGTH_SHORT).show();
                 Intent newIntent = new Intent(this, NewActivity.class);
-                startActivity(newIntent);
+                newIntent.putExtra("newData", allOpportunities);
+                startActivityForResult(newIntent, REQUESTCODE2);
                 return true;
             case R.id.action_settings:
                 Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
@@ -79,9 +80,18 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if( resultCode == Activity.RESULT_OK && requestCode == REQUESTCODE){
+        if( resultCode == Activity.RESULT_OK && requestCode == REQUESTCODE1){
 
             allOpportunities.remove(data.getIntExtra(DELETEOPPORTUNITYEXTRA, 0));
+            FragmentMain fm = (FragmentMain) getFragmentManager().findFragmentById(R.id.list_container);
+            fm.updateListAdapter();
+        }
+        if ( resultCode == Activity.RESULT_OK && requestCode == REQUESTCODE2){
+
+            String mName = data.getStringExtra("name");
+            String mResult = data.getStringExtra("result");
+            String mProblem = data.getStringExtra("problem");
+            allOpportunities.add(new Opportunity(mName, mResult, mProblem));
             FragmentMain fm = (FragmentMain) getFragmentManager().findFragmentById(R.id.list_container);
             fm.updateListAdapter();
         }
@@ -93,14 +103,11 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
         Intent detailIntent = new Intent (this, DetailActivity.class);
         detailIntent.putExtra(DetailActivity.OPPORTUNITYEXTRA, allOpportunities.get(position));
         detailIntent.putExtra(DetailActivity.DELETEEXTRA,position);
-        startActivityForResult(detailIntent, REQUESTCODE);
-
+        startActivityForResult(detailIntent, REQUESTCODE1);
     }
 
     @Override
     public void getOpportunity(ArrayList<Opportunity> opportunity) {
         allOpportunities = opportunity;
     }
-
-
 }
