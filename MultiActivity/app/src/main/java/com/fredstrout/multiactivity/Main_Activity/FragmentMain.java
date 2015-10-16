@@ -41,6 +41,7 @@ public class FragmentMain extends ListFragment{
         return frag;
     }
 
+//    Interface
     public interface OnRowClickedListener{
         public void viewOpportunity(int position);
         public void getOpportunity(ArrayList<Opportunity> opportunity);
@@ -67,6 +68,7 @@ public class FragmentMain extends ListFragment{
         setListAdapter(adapter);
         mListener.getOpportunity(opportunities);
 
+//        Long Click for Implicit Intent -> Text Message
         getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
             @Override
@@ -88,11 +90,13 @@ public class FragmentMain extends ListFragment{
         mListener.viewOpportunity(_position);
     }
 
+//    Refresh Display
     public void updateListAdapter(){
         BaseAdapter adapterOpportunity = (BaseAdapter) adapter;
         adapterOpportunity.notifyDataSetChanged();
     }
 
+//    Get the data
     private ArrayList<Opportunity> readFromFile(String _filename) {
         File external = MainActivity.mContext.getExternalFilesDir(null);
         Log.i("File", external.getAbsolutePath());

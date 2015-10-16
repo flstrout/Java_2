@@ -63,12 +63,9 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
+//        switch->case better than an if->else
         switch (id) {
             case R.id.action_new:
                 Toast.makeText(this, "New Clicked", Toast.LENGTH_SHORT).show();
@@ -76,7 +73,7 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
                 newIntent.putExtra("newData", allOpportunities);
                 startActivityForResult(newIntent, REQUESTCODE2);
                 return true;
-            case R.id.action_settings:
+            case R.id.action_settings:  // Nothing really happens when Settings is selected
                 Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
                 return true;
             default:

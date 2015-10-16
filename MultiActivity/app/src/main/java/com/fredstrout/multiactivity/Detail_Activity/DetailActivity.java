@@ -1,5 +1,10 @@
 package com.fredstrout.multiactivity.Detail_Activity;
 
+//    Fred Strout
+//    Java 2
+//    MultiActivity
+//    10/9/2015
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,12 +33,15 @@ public class DetailActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+//        Back Button
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
+//        Declare TextView objects
         TextView name = (TextView) findViewById(R.id.the_customer);
         TextView resolution = (TextView) findViewById(R.id.the_promise);
         TextView opportunity = (TextView) findViewById(R.id.the_opportunity);
 
+//        Get the data and do something with it
         Intent detailIntent = getIntent();
 
         if( detailIntent != null){
@@ -44,7 +52,6 @@ public class DetailActivity extends Activity {
         name.setText(mOpportunity.getCustomer());
         resolution.setText(mOpportunity.getResolution());
         opportunity.setText(mOpportunity.getOpportunity());
-
     }
 
     @Override
@@ -56,17 +63,15 @@ public class DetailActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
+//        switch->case better than an if->else
+        int id = item.getItemId();
         switch (id) {
-            case android.R.id.home:
+            case android.R.id.home: // Nothing really happens when New is selected from this activity
                 Toast.makeText(this, "Home Clicked", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
-            case R.id.action_settings:
+            case R.id.action_settings:  // Nothing really happens when Settings is selected
                 Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
                 return true;
             default:
@@ -74,6 +79,7 @@ public class DetailActivity extends Activity {
         }
     }
 
+//    Delete the selected data -> MAKE IT RIGHT!
     public void mirOnClick(View view) {
         Intent returnIntent = new Intent();
         returnIntent.putExtra(MainActivity.DELETEOPPORTUNITYEXTRA, mDelete);

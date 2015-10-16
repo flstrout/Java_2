@@ -1,5 +1,10 @@
 package com.fredstrout.multiactivity.New_Activity;
 
+//    Fred Strout
+//    Java 2
+//    MultiActivity
+//    10/9/2015
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -32,10 +37,6 @@ public class NewActivity extends Activity {
         Button btnSubmit = (Button) findViewById(R.id.btn_submit);
         btnSubmit.setOnClickListener(submitClicked);
         nContext = this;
-
-//        Intent newIntent = getIntent();
-//        newData = (ArrayList<Opportunity>) newIntent.getSerializableExtra("newData");
-
     }
 
     @Override
@@ -47,17 +48,15 @@ public class NewActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
+//        switch->case better than an if->else
+        int id = item.getItemId();
         switch (id) {
-            case android.R.id.home:
+            case android.R.id.home: // Nothing really happens when New is selected from this activity
                 Toast.makeText(this, "Home Clicked", Toast.LENGTH_SHORT).show();
                 finish();
                 return true;
-            case R.id.action_settings:
+            case R.id.action_settings:  // Nothing really happens when Settings is selected
                 Toast.makeText(this, "Settings Clicked", Toast.LENGTH_SHORT).show();
                 return true;
             default:
@@ -65,6 +64,7 @@ public class NewActivity extends Activity {
         }
     }
 
+//    Save the entered data to the ListFragment if it passes the sudo null check
     private View.OnClickListener submitClicked = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -75,10 +75,12 @@ public class NewActivity extends Activity {
             EditText promResult = (EditText)findViewById(R.id.resolution_promised);
             EditText problem = (EditText)findViewById(R.id.problem);
 
+//            Get EditText objects string value
             String name = custName.getText().toString();
             String result = promResult.getText().toString();
             String prob = problem.getText().toString();
 
+            // Sudo null check
             if ("".equals(custName.getText().toString()) || "".equals(promResult.getText().toString())) {
                 Toast.makeText(nContext, "Required fields missing data! Please input the appropriate data for these fields or exit without saving.", Toast.LENGTH_LONG).show();
             } else {
@@ -88,6 +90,7 @@ public class NewActivity extends Activity {
                 newData.add(new Opportunity(name, result, prob));
                 Toast.makeText(nContext, (name + "'s Opportunity was saved succesfully!"), Toast.LENGTH_SHORT).show();
 
+//                Return Intent -> Could have sent the Serialized object back but I already did that once; I wanted to try something different.
                 Intent returnNewIntent = new Intent();
                 returnNewIntent.putExtra("name", name);
                 returnNewIntent.putExtra("result", result);
