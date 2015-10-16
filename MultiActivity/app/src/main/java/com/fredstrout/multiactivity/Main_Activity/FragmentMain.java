@@ -8,13 +8,17 @@ package com.fredstrout.multiactivity.Main_Activity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ListFragment;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.fredstrout.multiactivity.Data_Utility.AdapterOpportunity;
 import com.fredstrout.multiactivity.Data_Utility.Opportunity;
@@ -62,6 +66,20 @@ public class FragmentMain extends ListFragment{
         adapter = new AdapterOpportunity(MainActivity.mContext, opportunities);
         setListAdapter(adapter);
         mListener.getOpportunity(opportunities);
+
+        getListView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+
+            @Override
+            public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+                Opportunity opportunity = (Opportunity)arg0.getItemAtPosition(arg2);
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                sendIntent.setData(Uri.parse("sms:"));
+                sendIntent.putExtra("sms_body", "New Opportunity\n\nCustomer Name: " + opportunity.getCustomer()  + "\nOpportunity: " + opportunity.getOpportunity() + "\nPromised Resolution: \n" + opportunity.getResolution());
+                startActivity(sendIntent);
+                Toast.makeText(getActivity(), "On long click listener", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
     }
 
     @Override
