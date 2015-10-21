@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fredstrout.sqliteapp" >
 
+    <permission android:name="com.fredstrout.sqliteapp.opportunityprovider.ACCESS_DATA"
+        android:protectionLevel="dangerous" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +23,9 @@
         <provider
             android:authorities="com.fredstrout.sqliteapp.opportunityprovider"
             android:name=".OpportunityProvider"
-            android:exported="false"/>
+            android:enabled="true"
+            android:exported="true"
+            android:permission="com.fredstrout.sqliteapp.opportunityprovider.ACCESS_DATA"/>
 
     </application>
 
