@@ -2,8 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.fredstrout.sqliteapp" >
 
-    <permission android:name="com.fredstrout.sqliteapp.opportunityprovider.ACCESS_DATA"
-        android:protectionLevel="dangerous" />
+    <permission android:name="com.fredstrout.sqliteapp.opportunityprovider.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission android:name="com.fredstrout.sqliteapp.opportunityprovider.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -21,11 +23,12 @@
         </activity>
         
         <provider
-            android:authorities="com.fredstrout.sqliteapp.opportunityprovider"
             android:name=".OpportunityProvider"
+            android:authorities="com.fredstrout.sqliteapp.opportunityprovider"
             android:enabled="true"
             android:exported="true"
-            android:permission="com.fredstrout.sqliteapp.opportunityprovider.ACCESS_DATA"/>
+            android:readPermission="com.fredstrout.sqliteapp.opportunityprovider.READ_DATABASE"
+            android:writePermission="com.fredstrout.sqliteapp.opportunityprovider.WRITE_DATABASE"/>
 
     </application>
 
