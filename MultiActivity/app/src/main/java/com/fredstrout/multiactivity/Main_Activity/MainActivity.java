@@ -52,6 +52,8 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
         trans.replace(R.id.list_container, frag, FragmentMain.TAG);
 
         trans.commit();
+
+        writeToFile(FILENAME, allOpportunities);
     }
 
     @Override
