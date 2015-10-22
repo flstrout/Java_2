@@ -10,6 +10,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity implements FragmentMain.OnRowClickedListener{
 
+    SharedPreferences prefs = null;
     public static final int REQUESTCODE1 = 1;
     public static final int REQUESTCODE2 = 2;
     public static final String DELETEOPPORTUNITYEXTRA = "com.fredstrout.multiactivity.Delete";
@@ -42,6 +44,7 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        prefs = getSharedPreferences("com.fredstrout.multiactivity", MODE_PRIVATE);
 
         mContext = this;
 
@@ -53,8 +56,13 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
 
         trans.commit();
 
-        writeToFile(FILENAME, allOpportunities);
+        if (prefs.getBoolean("firstrun", true)) {
+
+            writeToFile(FILENAME, allOpportunities);
+            prefs.edit().putBoolean("firstrun", false).commit();
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -121,7 +129,7 @@ public class MainActivity extends FragmentActivity implements FragmentMain.OnRow
 
     private void writeToFile(String _filename, ArrayList<Opportunity> _data) {
         File external = getExternalFilesDir(null);
-        Log.i("File", external.getAbsolutePath());
+//        Log.i("File", external.getAbsolutePath());
         File file = new File(external, _filename);
 
         try {

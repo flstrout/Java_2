@@ -99,7 +99,7 @@ public class FragmentMain extends ListFragment{
 //    Get the data
     private ArrayList<Opportunity> readFromFile(String _filename) {
         File external = MainActivity.mContext.getExternalFilesDir(null);
-        Log.i("File", external.getAbsolutePath());
+//        Log.i("File", external.getAbsolutePath());
         File file = new File(external, _filename);
 
         try {
