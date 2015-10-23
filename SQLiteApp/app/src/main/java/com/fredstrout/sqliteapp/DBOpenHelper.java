@@ -27,7 +27,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
                     OPPORTUNITY_NAME + " TEXT, " +
                     OPPORTUNITY_RESOLUTION + " TEXT, " +
                     OPPORTUNITY_PROBLEM + " TEXT, " +
-                    OPPORTUNITY_CREATED + " TEXT default CURRENT_TIMESTAMP" +
+                    OPPORTUNITY_CREATED + " INTEGER" +
                     ")";
 
     public DBOpenHelper(Context context) {

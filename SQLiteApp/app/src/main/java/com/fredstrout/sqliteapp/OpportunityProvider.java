@@ -35,7 +35,7 @@ public class OpportunityProvider extends ContentProvider{
     @Override
     public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
         return database.query(DBOpenHelper.TABLE_OPPORTUNITIES, DBOpenHelper.ALL_COLUMNS, selection,
-                null, null, null, DBOpenHelper.OPPORTUNITY_CREATED + " DESC");
+                null, null, null, DBOpenHelper.OPPORTUNITY_NAME + " ASC");
     }
 
     @Override

@@ -45,11 +45,12 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
         getLoaderManager().restartLoader(0, null, this);
     }
 
-    private void insertOpportunity(String name, String promise, String problem) {
+    private void insertOpportunity(String name, String promise, String problem, Integer resolved) {
         ContentValues values = new ContentValues();
         values.put(DBOpenHelper.OPPORTUNITY_NAME, name);
         values.put(DBOpenHelper.OPPORTUNITY_RESOLUTION, promise);
         values.put(DBOpenHelper.OPPORTUNITY_PROBLEM, problem);
+        values.put(DBOpenHelper.OPPORTUNITY_CREATED, resolved);
         Uri opportunityUri = getContentResolver().insert(OpportunityProvider.CONTENT_URI, values);
         Log.i("MainActivity", "Saved Opportunity " + opportunityUri.getLastPathSegment());
     }
@@ -100,10 +101,10 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
     }
 
     private void createData() {
-        insertOpportunity("Bruce Wayne", "Free Big Mac", "Dressed Wrong");
-        insertOpportunity("Diana Prince", "Free Salad", "Lettuce Old");
-        insertOpportunity("Clark Kent", "Free Parfait", "Not in Bag");
-        insertOpportunity("Lois Lane", "Free Snack Wrap", "Chicken Undercooked");
+        insertOpportunity("Bruce Wayne", "Free Big Mac", "Dressed Wrong", 0);
+        insertOpportunity("Diana Prince", "Free Salad", "Lettuce Old", 1);
+        insertOpportunity("Clark Kent", "Free Parfait", "Not in Bag", 1);
+        insertOpportunity("Lois Lane", "Free Snack Wrap", "Chicken Undercooked", 0);
 
         restartLoader();
     }
