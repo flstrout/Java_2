@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements LoaderManager.LoaderCallba
             String selProblem = cursor.getString(cursor.getColumnIndex(Constants.OPPORTUNITY_PROBLEM));
             if (selProblem == null){selProblem = "";}
 
-            boolean selResolved = false;
+            int selResolved = cursor.getInt(cursor.getColumnIndex(Constants.OPPORTUNITY_CREATED));
 
             selectedOpportunity.clear();
             selectedOpportunity.add(new Opportunity(selName, selResolution, selProblem, selResolved));

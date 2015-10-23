@@ -34,7 +34,11 @@ public class DetailActivity extends Activity{
         name.setText(mOpportunity.getCustomer());
         resolution.setText(mOpportunity.getResolution());
         opportunity.setText(mOpportunity.getOpportunity());
-        resolved.setChecked(mOpportunity.getResolved());
+        boolean isResolved = false;
+        if (mOpportunity.getResolved() == 1){
+            isResolved = true;
+        }
+        resolved.setChecked(isResolved);
 
         Toast.makeText(this, mOpportunity.getCustomer(), Toast.LENGTH_SHORT).show();
     }
