@@ -1,5 +1,9 @@
 package com.fredstrout.sqliteapp;
 
+//    Java II
+//    Fred Strout
+//    Content Provider - Database App
+
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;

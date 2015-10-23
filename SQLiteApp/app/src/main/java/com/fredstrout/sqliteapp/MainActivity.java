@@ -1,5 +1,9 @@
 package com.fredstrout.sqliteapp;
 
+//    Java II
+//    Fred Strout
+//    Content Provider - Database App
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.LoaderManager;

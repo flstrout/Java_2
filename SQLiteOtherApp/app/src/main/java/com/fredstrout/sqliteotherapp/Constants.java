@@ -1,5 +1,9 @@
 package com.fredstrout.sqliteotherapp;
 
+//    Java II
+//    Fred Strout
+//    Content Provider - No DB App
+
 import android.net.Uri;
 
 public class Constants {

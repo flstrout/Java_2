@@ -1,9 +1,8 @@
 package com.fredstrout.sqliteotherapp;
 
+//    Java II
 //    Fred Strout
-//    Java 2
-//    MultiActivity
-//    10/9/2015
+//    Content Provider - No DB App
 
 import java.io.Serializable;
 
